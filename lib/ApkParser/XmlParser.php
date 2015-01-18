@@ -204,19 +204,52 @@ class XmlParser
     {
         if (!$this->ready)
             $this->decompress();
-        return $this->utf8ForXml($this->xml);
+        return $this->xml;
     }
 
     public function getXmlObject($className = '\SimpleXmlElement')
     {
         if ($this->xmlObject === NULL || !$this->xmlObject instanceof $className)
-            $this->xmlObject = simplexml_load_string($this->getXmlString(), $className);
+        {
+            $cleaned_xml = $this->stripInvalidXml($this->getXmlString());
+            $this->xmlObject = simplexml_load_string($cleaned_xml, $className);
+        }
 
         return $this->xmlObject;
     }
 
-    public function utf8ForXml($string)
+    /**
+     * Removes invalid XML
+     *
+     * @access public
+     * @param string $value
+     * @return string
+     */
+    function stripInvalidXml($value)
     {
-        return preg_replace ('/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u', ' ', $string);
+        $ret = "";
+        if (empty($value))
+        {
+            return $ret;
+        }
+        $length = strlen($value);
+        for ($i=0; $i < $length; $i++)
+        {
+            $current = ord($value{$i});
+            if (($current == 0x9) ||
+                ($current == 0xA) ||
+                ($current == 0xD) ||
+                (($current >= 0x20) && ($current <= 0xD7FF)) ||
+                (($current >= 0xE000) && ($current <= 0xFFFD)) ||
+                (($current >= 0x10000) && ($current <= 0x10FFFF)))
+            {
+                $ret .= chr($current);
+            }
+            else
+            {
+                $ret .= " ";
+            }
+        }
+        return $ret;
     }
 }
