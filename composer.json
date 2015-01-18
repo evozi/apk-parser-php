@@ -1,11 +1,17 @@
 {
-    "name": "tufanbarisyildirim/php-apk-parser",
+    "name": "evozi/php-apk-parser",
     "type": "library",
-    "description": "Read basic info about an application from .apk file.",
+    "description": "Read basic android application info from .apk file.",
     "keywords": ["apk", "parser", "android"],
-    "homepage": "https://github.com/tufanbarisyildirim/php-apk-parser",
+    "homepage": "https://github.com/evozi/php-apk-parser",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Evozi",
+            "email": "email@evozi.com",
+            "homepage": "http://www.evozi.com",
+            "role": "Developer"
+        },
         {
             "name": "Tufan Baris YILDIRIM",
             "email": "tufanbarisyildirim@gmail.com",
@@ -22,7 +28,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/tufanbarisyildirim/php-apk-parser.git"
+            "url": "https://github.com/evozi/php-apk-parser.git"
         }
     ],
     "autoload": {
