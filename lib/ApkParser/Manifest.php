@@ -5,6 +5,7 @@ namespace ApkParser;
  * This file is part of the Apk Parser package.
  *
  * (c) Tufan Baris Yildirim <tufanbarisyildirim@gmail.com>
+ * (c) Evozi <email@evozi.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -390,6 +391,12 @@ class Manifest extends \ApkParser\Xml
                 'warning' => false,
                 'danger' => false,
             ),
+        'BIND_DREAM_SERVICE' =>
+            array(
+                'cost' => false,
+                'warning' => false,
+                'danger' => false,
+            ),
         'BIND_INPUT_METHOD' =>
             array(
                 'cost' => false,
@@ -426,6 +433,18 @@ class Manifest extends \ApkParser\Xml
                 'warning' => false,
                 'danger' => false,
             ),
+        'BIND_TV_INPUT' =>
+            array(
+                'cost' => false,
+                'warning' => false,
+                'danger' => false,
+            ),
+        'BIND_VOICE_INTERACTION' =>
+            array(
+                'cost' => false,
+                'warning' => false,
+                'danger' => false,
+            ),
         'BIND_VPN_SERVICE' =>
             array(
                 'cost' => false,
@@ -454,6 +473,12 @@ class Manifest extends \ApkParser\Xml
             array(
                 'cost' => false,
                 'warning' => true,
+                'danger' => false,
+            ),
+        'BODY_SENSORS' =>
+            array(
+                'cost' => false,
+                'warning' => false,
                 'danger' => false,
             ),
         'BRICK' =>
@@ -876,6 +901,12 @@ class Manifest extends \ApkParser\Xml
                 'warning' => false,
                 'danger' => false,
             ),
+        'READ_VOICEMAIL' =>
+            array(
+                'cost' => false,
+                'warning' => false,
+                'danger' => false,
+            ),
         'REBOOT' =>
             array(
                 'cost' => false,
@@ -1165,6 +1196,12 @@ class Manifest extends \ApkParser\Xml
                 'danger' => false,
             ),
         'WRITE_USER_DICTIONARY' =>
+            array(
+                'cost' => false,
+                'warning' => false,
+                'danger' => false,
+            ),
+        'WRITE_VOICEMAIL' =>
             array(
                 'cost' => false,
                 'warning' => false,
