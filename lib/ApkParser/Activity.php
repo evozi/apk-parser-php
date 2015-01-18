@@ -5,6 +5,7 @@ namespace ApkParser;
  * This file is part of the Apk Parser package.
  *
  * (c) Tufan Baris Yildirim <tufanbarisyildirim@gmail.com>
+ * (c) Evozi <email@evozi.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -43,10 +44,19 @@ class Activity
 
         foreach ($this->filters as $filter) {
             if (($filter->actions != null && in_array('MAIN', $filter->actions)) &&
-                ($filter->categories != null && in_array('LAUNCHER', $filter->categories)))
+                ($filter->categories != null && in_array('LAUNCHER', $filter->categories))
+            )
                 $this->isLauncher = true;
         }
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLabel()
+    {
+        return $this->label;
     }
 
     /**
@@ -60,9 +70,9 @@ class Activity
     /**
      * @return mixed
      */
-    public function getLabel()
+    public function getName()
     {
-        return $this->label;
+        return $this->name;
     }
 
     /**
@@ -74,11 +84,11 @@ class Activity
     }
 
     /**
-     * @return mixed
+     * @return IntentFilter[]
      */
-    public function getName()
+    public function getFilters()
     {
-        return $this->name;
+        return $this->filters; // we may need an intent-filter class
     }
 
     /**
@@ -87,14 +97,6 @@ class Activity
     public function setFilters(array $filters)
     {
         $this->filters = $filters;
-    }
-
-    /**
-     * @return IntentFilter[]
-     */
-    public function getFilters()
-    {
-        return $this->filters; // we may need an intent-filter class
     }
 
     /**

@@ -5,6 +5,7 @@ namespace ApkParser;
  * This file is part of the Apk Parser package.
  *
  * (c) Tufan Baris Yildirim <tufanbarisyildirim@gmail.com>
+ * (c) Evozi <email@evozi.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -97,7 +98,7 @@ class Parser
 
         $file_list = \ApkParser\Utils::globRecursive($cache_folder . '*.ddx');
 
-     //   var_dump($cache_folder);
+        //   var_dump($cache_folder);
         //Make classnames more readable.
         foreach ($file_list as &$file) {
             $file = str_replace($cache_folder, '', $file);

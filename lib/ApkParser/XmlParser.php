@@ -5,6 +5,7 @@ namespace ApkParser;
  * This file is part of the Apk Parser package.
  *
  * (c) Tufan Baris Yildirim <tufanbarisyildirim@gmail.com>
+ * (c) Evozi <email@evozi.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -209,8 +210,7 @@ class XmlParser
 
     public function getXmlObject($className = '\SimpleXmlElement')
     {
-        if ($this->xmlObject === NULL || !$this->xmlObject instanceof $className)
-        {
+        if ($this->xmlObject === NULL || !$this->xmlObject instanceof $className) {
             $cleaned_xml = $this->stripInvalidXml($this->getXmlString());
             $this->xmlObject = simplexml_load_string($cleaned_xml, $className);
         }
@@ -228,25 +228,21 @@ class XmlParser
     function stripInvalidXml($value)
     {
         $ret = "";
-        if (empty($value))
-        {
+        if (empty($value)) {
             return $ret;
         }
         $length = strlen($value);
-        for ($i=0; $i < $length; $i++)
-        {
+        for ($i = 0; $i < $length; $i++) {
             $current = ord($value{$i});
             if (($current == 0x9) ||
                 ($current == 0xA) ||
                 ($current == 0xD) ||
                 (($current >= 0x20) && ($current <= 0xD7FF)) ||
                 (($current >= 0xE000) && ($current <= 0xFFFD)) ||
-                (($current >= 0x10000) && ($current <= 0x10FFFF)))
-            {
+                (($current >= 0x10000) && ($current <= 0x10FFFF))
+            ) {
                 $ret .= chr($current);
-            }
-            else
-            {
+            } else {
                 $ret .= " ";
             }
         }

@@ -1,14 +1,15 @@
 <?php
 namespace ApkParser;
 
-/**
- * This file is part of the Apk Parser package.
- *
- * (c) Tufan Baris Yildirim <tufanbarisyildirim@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+    /**
+     * This file is part of the Apk Parser package.
+     *
+     * (c) Tufan Baris Yildirim <tufanbarisyildirim@gmail.com>
+     * (c) Evozi <email@evozi.com>
+     *
+     * For the full copyright and license information, please view the LICENSE
+     * file that was distributed with this source code.
+     */
 
 // Android Api Version Codes
 define('ANRDOID_API_BASE', 1);
