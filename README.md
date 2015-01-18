@@ -1,7 +1,5 @@
 # [APK Parser](https://github.com/evozi/apk-parser-php)
-[![Packagist License](https://poser.pugx.org/evozi/apk-parser-php/license.png)](http://choosealicense.com/licenses/mit/)
-[![Latest Stable Version](https://poser.pugx.org/evozi/apk-parser-php/version.png)](https://packagist.org/packages/evozi/apk-parser-php)
-[![Total Downloads](https://poser.pugx.org/evozi/apk-parser-php/d/total.png)](https://packagist.org/packages/evozi/apk-parser-php)
+[![Latest Stable Version](https://poser.pugx.org/evozi/apk-parser-php/version.svg)](https://packagist.org/packages/evozi/apk-parser-php) [![Latest Unstable Version](https://poser.pugx.org/evozi/apk-parser-php/v/unstable.svg)](//packagist.org/packages/evozi/apk-parser-php) [![Total Downloads](https://poser.pugx.org/evozi/apk-parser-php/downloads.svg)](https://packagist.org/packages/evozi/apk-parser-php)
 
 This package can extract application package files in APK format used by devices running on Android OS.
 It can open an APK file and extract the contained manifest file to parse it and retrieve the meta-information
@@ -44,9 +42,10 @@ Once you have added this, just run:
 php composer.phar update evozi/apk-parser-php
 ```
 or
+
 ```bash
 composer install
-```bash
+```
 
 ### Install using composer
 
