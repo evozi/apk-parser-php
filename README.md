@@ -1,4 +1,4 @@
-# [Apk Parser](http://tufanbarisyildirim.github.io/php-apk-parser/)
+# [APK Parser](https://github.com/Evozi/php-apk-parser)
 
 This package can extract application package files in APK format used by devices running on Android OS.
 It can open an APK file and extract the contained manifest file to parse it and retrieve the meta-information
@@ -18,7 +18,7 @@ PHP 5.3+
 {
     ...
     "require": {
-        "tufanbarisyildirim/php-apk-parser":"dev-master"
+        "evozi/php-apk-parser":"dev-master"
     }
 }
 ```
