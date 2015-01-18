@@ -185,6 +185,8 @@ class XmlParser
         for ($i = 0; $i < $strlen; $i++)
             $string .= chr($arr[$string_offset + 2 + $i * 2]);
 
+        $string = mb_convert_encoding($string, 'UTF-8', 'ASCII');
+
         return $string;
     }
 
@@ -202,7 +204,7 @@ class XmlParser
     {
         if (!$this->ready)
             $this->decompress();
-        return $this->xml;
+        return $this->utf8ForXml($this->xml);
     }
 
     public function getXmlObject($className = '\SimpleXmlElement')
@@ -211,5 +213,10 @@ class XmlParser
             $this->xmlObject = simplexml_load_string($this->getXmlString(), $className);
 
         return $this->xmlObject;
+    }
+
+    public function utf8ForXml($string)
+    {
+        return preg_replace ('/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u', ' ', $string);
     }
 }
