@@ -162,6 +162,7 @@ class Manifest extends \ApkParser\Xml
         'BATTERY_STATS' => 'Allows an application to collect battery statistics',
         'BIND_ACCESSIBILITY_SERVICE' => 'Must be required by an AccessibilityService, to ensure that only the system can bind to it.',
         'BIND_APPWIDGET' => 'Allows an application to tell the AppWidget service which application can access AppWidget\'s data.',
+        'BIND_CARRIER_MESSAGING_SERVICE' => 'Must be required by a CarrierMessagingService.',
         'BIND_DEVICE_ADMIN' => 'Must be required by device administration receiver, to ensure that only the system can interact with it.',
         'BIND_DREAM_SERVICE' => 'Must be required by an DreamService, to ensure that only the system can bind to it.',
         'BIND_INPUT_METHOD' => 'Must be required by an InputMethodService, to ensure that only the system can bind to it.',

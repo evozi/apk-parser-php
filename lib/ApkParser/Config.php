@@ -13,7 +13,7 @@ namespace ApkParser;
 class Config
 {
     private $config;
-    
+
     /**
      * @param array $config
      */
@@ -24,6 +24,7 @@ class Config
             'jar_path' => __DIR__ . '/Dex/dedexer.jar'
         ), $config);
     }
+
     /**
      * @param $key
      * @return mixed
