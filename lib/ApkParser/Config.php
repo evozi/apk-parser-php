@@ -14,7 +14,10 @@ class Config
 {
     private $config;
 
-    public function __construct(array $config = null)
+    /**
+     * @param array $config
+     */
+    public function __construct(array $config = array())
     {
         if ($config == null)
             $config = array();
@@ -25,6 +28,10 @@ class Config
         ), $config);
     }
 
+    /**
+     * @param $key
+     * @return mixed
+     */
     public function get($key)
     {
         return $this->config[$key];

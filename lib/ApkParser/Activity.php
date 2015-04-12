@@ -24,7 +24,9 @@ class Activity
 
     public $isLauncher = false;
 
-
+    /**
+     * @param ManifestXmlElement $actXml
+     */
     public function __construct(ManifestXmlElement $actXml)
     {
 
@@ -34,8 +36,9 @@ class Activity
         $this->setLabel(isset($attrs['label']) ? $attrs['label'] : null);
 
         if (isset($actArray['intent-filter'])) {
-            if (!is_array($actArray['intent-filter']))
+            if (!is_array($actArray['intent-filter'])) {
                 $actArray['intent-filter'] = array($actArray['intent-filter']);
+            }
 
             foreach ($actArray['intent-filter'] as $filterXml) {
                 $this->filters[] = new IntentFilter($filterXml);
@@ -44,9 +47,9 @@ class Activity
 
         foreach ($this->filters as $filter) {
             if (($filter->actions != null && in_array('MAIN', $filter->actions)) &&
-                ($filter->categories != null && in_array('LAUNCHER', $filter->categories))
-            )
+                ($filter->categories != null && in_array('LAUNCHER', $filter->categories))) {
                 $this->isLauncher = true;
+            }
         }
 
     }
@@ -113,5 +116,13 @@ class Activity
     public function setIsLauncher($isLauncher)
     {
         $this->isLauncher = $isLauncher;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsLauncher()
+    {
+        return $this->isLauncher;
     }
 }

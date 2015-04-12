@@ -81,6 +81,7 @@ class Parser
         $apkName = $this->apk->getApkName();
 
         $cache_folder = $this->config->get('tmp_path') . '/' . str_replace('.', '_', $apkName) . '/';
+
         // No folder means no cached data.
         if (!is_dir($cache_folder))
             mkdir($cache_folder, 0755, true);
@@ -98,8 +99,6 @@ class Parser
 
         $file_list = \ApkParser\Utils::globRecursive($cache_folder . '*.ddx');
 
-        //   var_dump($cache_folder);
-        //Make classnames more readable.
         foreach ($file_list as &$file) {
             $file = str_replace($cache_folder, '', $file);
             $file = str_replace('/', '.', $file);
@@ -107,10 +106,6 @@ class Parser
             $file = trim($file, '.');
         }
 
-
         return $file_list;
-
-        //re assign $data with new class_list;
-
     }
 }

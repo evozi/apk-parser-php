@@ -86,10 +86,11 @@ class AndroidPlatform
 
     public function __construct($apiLevel)
     {
-        if (!isset(self::$platforms[$apiLevel]))
+        if (!isset(self::$platforms[$apiLevel])) {
             throw new \Exception("Unknown Api Level: " . $apiLevel);
+        }
 
-        $this->level = $apiLevel;
+        $this->setLevel($apiLevel);
     }
 
     public function __get($var)
@@ -102,5 +103,21 @@ class AndroidPlatform
                 return self::$platforms[$this->level][$var];
                 break;
         }
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param mixed|null $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
     }
 }

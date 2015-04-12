@@ -12,6 +12,9 @@ namespace ApkParser;
 
 class ManifestXmlElement extends \SimpleXMLElement
 {
+    /**
+     * @return array
+     */
     public function getPermissions()
     {
         /**
@@ -38,12 +41,18 @@ class ManifestXmlElement extends \SimpleXMLElement
         return $perms;
     }
 
-
+    /**
+     * @return Application
+     */
     public function getApplication()
     {
         return new Application($this->application);
     }
 
+    /**
+     * @param $attributeName
+     * @return null
+     */
     public function getAttribute($attributeName)
     {
         $attrs = get_object_vars($this);
