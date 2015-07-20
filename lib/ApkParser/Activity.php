@@ -49,7 +49,6 @@ class Activity
             if (($filter->actions != null && in_array('MAIN', $filter->actions)) &&
                 ($filter->categories != null && in_array('LAUNCHER', $filter->categories))
             ) {
-                ($filter->categories != null && in_array('LAUNCHER', $filter->categories))) {
                 $this->isLauncher = true;
             }
         }
