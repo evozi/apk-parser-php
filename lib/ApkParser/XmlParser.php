@@ -229,14 +229,23 @@ class XmlParser
     public function compXmlStringAt($arr, $string_offset)
     {
         $strlen = $arr[$string_offset + 1] << 8 & 0xff00 | $arr[$string_offset] & 0xff;
+        $string_offset += 2;
         $string = "";
-
-        for ($i = 0; $i < $strlen; $i++) {
-            $string .= chr($arr[$string_offset + 2 + $i * 2]);
+        // We are dealing with Unicode strings, so each char is 2 bytes
+        $strEnd = $string_offset + ($strlen * 2);
+        if (function_exists("mb_convert_encoding"))
+        {
+            for ($i = $string_offset; $i < $strEnd; $i++) {
+                $string .= chr($arr[$i]);
+            }
+            $string = mb_convert_encoding ($string , "UTF-8", "UTF-16LE");
         }
-
-        $string = mb_convert_encoding($string, 'UTF-8', 'ASCII');
-
+        else  // sonvert as ascii, skipping every second char
+        {
+            for ($i = $string_offset; $i < $strEnd; $i+=2) {
+                $string .= chr($arr[$i]);
+            }
+        }
         return $string;
     }
 
