@@ -1,6 +1,8 @@
 <?php
 namespace ApkParser;
 
+use ApkParser\Exceptions\XmlParserException;
+
 /**
  * This file is part of the Apk Parser package.
  *
@@ -296,15 +298,23 @@ class XmlParser
     /**
      * @param string $className
      * @return \SimpleXMLElement
+     * @throws XmlParserException
      */
     public function getXmlObject($className = '\SimpleXmlElement')
     {
         if ($this->xmlObject === NULL || !$this->xmlObject instanceof $className) {
+            $prev = libxml_use_internal_errors(true);
             $cleaned_xml = $this->stripInvalidXml($this->getXmlString());
             $this->xmlObject = simplexml_load_string($cleaned_xml, $className);
+            if ($this->xmlObject === false) {
+                throw new XmlParserException($xml);
+            }
+            libxml_use_internal_errors($prev);
         }
+
         return $this->xmlObject;
     }
+
     /**
      * Removes invalid XML
      *
