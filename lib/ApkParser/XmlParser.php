@@ -7,6 +7,7 @@ use ApkParser\Exceptions\XmlParserException;
  * This file is part of the Apk Parser package.
  *
  * (c) Tufan Baris Yildirim <tufanbarisyildirim@gmail.com>
+ * (c) Evozi <email@evozi.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -307,7 +308,7 @@ class XmlParser
             $cleaned_xml = $this->stripInvalidXml($this->getXmlString());
             $this->xmlObject = simplexml_load_string($cleaned_xml, $className);
             if ($this->xmlObject === false) {
-                throw new XmlParserException($xml);
+                throw new XmlParserException($cleaned_xml);
             }
             libxml_use_internal_errors($prev);
         }
