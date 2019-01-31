@@ -3291,7 +3291,7 @@ class XmlParser
                 $resName = "timeZone";
                 break;
             default:
-                $resName = "0x" . dechex($id);
+                $resName = "NOT_FOUND_0x" . dechex($id);
         }
         return $resName;
     }
