@@ -47,9 +47,9 @@ class Manifest extends \ApkParser\Xml
      * Get Application Permissions
      * @return array
      */
-    public function getPermissions()
+    public function getPermissions($lang = 'en')
     {
-        return $this->getXmlObject()->getPermissions();
+        return $this->getXmlObject()->getPermissions($lang);
     }
 
     /**
