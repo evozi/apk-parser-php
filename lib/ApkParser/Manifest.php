@@ -141,6 +141,28 @@ class Manifest extends \ApkParser\Xml
     }
 
     /**
+     * More Information About The target API Level required for the application to run.
+     * @return AndroidPlatform
+     */
+    public function getTargetSdk()
+    {
+        if ($this->getTargetSdkLevel()) return new AndroidPlatform($this->getTargetSdkLevel());
+        return null;
+    }
+
+    /**
+     * The target API Level required for the application to run.
+     * @return float|int
+     */
+    public function getTargetSdkLevel()
+    {
+        $xmlObj = $this->getXmlObject();
+        $usesSdk = get_object_vars($xmlObj->{'uses-sdk'});
+        if (hexdec($usesSdk['@attributes']['targetSdkVersion'])) return hexdec($usesSdk['@attributes']['targetSdkVersion']);
+        return null;
+    }
+    
+    /**
      * get SimleXmlElement created from AndroidManifest.xml
      *
      * @param mixed $className
