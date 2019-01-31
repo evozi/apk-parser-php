@@ -38,6 +38,9 @@ define('ANDROID_API_LOLLIPOP_MR1', 22);
 define('ANDROID_API_M', 23);
 define('ANDROID_API_N', 24);
 define('ANDROID_API_N_MR1', 25);
+define('ANDROID_API_OREO', 26);
+define('ANDROID_API_OREO_MR1', 27);
+define('ANDROID_API_PIE', 28);
 
 /**
  *
@@ -79,6 +82,9 @@ class AndroidPlatform
         ANDROID_API_M => array('versions' => array('6.0'), 'url' => 'https://developer.android.com/about/versions/marshmallow/android-6.0.html'),
         ANDROID_API_N => array('versions' => array('7.0'), 'url' => 'https://developer.android.com/about/versions/nougat/android-7.0.html'),
         ANDROID_API_N_MR1 => array('versions' => array('7.1'), 'url' => 'https://developer.android.com/about/versions/nougat/android-7.1.html'),
+        ANDROID_API_OREO => array('versions' => array('8.0'), 'url' => 'https://developer.android.com/about/versions/oreo/android-8.0'),
+        ANDROID_API_OREO_MR1 => array('versions' => array('8.1'), 'url' => 'https://developer.android.com/about/versions/oreo/android-8.1'),
+        ANDROID_API_PIE => array('versions' => array('9.0'), 'url' => 'https://developer.android.com/about/versions/pie/android-9.0')
     );
 
     public $level = null;
