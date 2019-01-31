@@ -54,7 +54,7 @@ class Application
     public function getAttr($attrName)
     {
         $attr = get_object_vars($this->application);
-        return (string)$attr['@attributes'][$attrName];
+        return isset($attr['@attributes']) && isset($attr['@attributes'][$attrName]) ? (string)$attr['@attributes'][$attrName] : null;
     }
 
     /**

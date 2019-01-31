@@ -1,45 +1,54 @@
 {
-    "name": "evozi/apk-parser-php",
-    "type": "library",
-    "description": "Read basic android application info from .apk file.",
-    "keywords": ["apk", "parser", "android"],
-    "homepage": "https://github.com/evozi/apk-parser-php",
-    "support": {
-        "email": "email@evozi.com",
-        "issues": "https://github.com/evozi/apk-parser-php/issues",
-        "source": "https://github.com/evozi/apk-parser-php"
+  "name": "evozi/apk-parser-php",
+  "type": "library",
+  "description": "Read basic info about android application from .apk file.",
+  "keywords": [
+    "apk",
+    "parser",
+    "android"
+  ],
+  "homepage": "https://github.com/evozi/apk-parser-php",
+  "support": {
+    "email": "email@evozi.com",
+    "issues": "https://github.com/evozi/apk-parser-php/issues",
+    "source": "https://github.com/evozi/apk-parser-php"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Evozi",
+      "email": "email@evozi.com",
+      "homepage": "http://www.evozi.com",
+      "role": "Developer"
     },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Evozi",
-            "email": "email@evozi.com",
-            "homepage": "http://www.evozi.com",
-            "role": "Developer"
-        },
-        {
-            "name": "Tufan Baris YILDIRIM",
-            "email": "tufanbarisyildirim@gmail.com",
-            "homepage": "http://tufanbarisyildirim.com",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "3.7.*"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/evozi/apk-parser-php.git"
-        }
-    ],
-    "autoload": {
-        "psr-0": {
-            "ApkParser": "lib"
-        }
-    },
-    "minimum-stability": "dev"
+    {
+      "name": "Tufan Baris YILDIRIM",
+      "email": "tufanbarisyildirim@gmail.com",
+      "homepage": "http://tufanbarisyildirim.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "ext-simplexml": "*",
+    "ext-json": "*",
+    "ext-libxml": "*",
+    "ext-mbstring": "*",
+    "ext-zip": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "3.7.*"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/evozi/apk-parser-php.git"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "ApkParser": "lib"
+    }
+  },
+  "minimum-stability": "dev"
 }

@@ -94,9 +94,7 @@ class AndroidPlatform
      *
      * @param mixed $apiLevel
      * @throws \Exception
-     * @return \ApkParser\AndroidPlatform
      */
-
     public function __construct($apiLevel)
     {
         if (!isset(self::$platforms[$apiLevel])) {

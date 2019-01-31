@@ -27,7 +27,7 @@ class XmlParserException extends ApkException
      * Borrowed from http://php.net/manual/en/function.libxml-get-errors.php
      *
      * @param \LibXMLError $error
-     * @param string $xml
+     * @param array $xml
      * @return string
      */
     private function display_xml_error(\LibXMLError $error, $xml)

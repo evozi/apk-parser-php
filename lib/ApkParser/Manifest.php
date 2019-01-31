@@ -11,7 +11,7 @@ namespace ApkParser;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-class Manifest extends \ApkParser\Xml
+class Manifest extends Xml
 {
 
     private $xmlParser;
@@ -28,6 +28,7 @@ class Manifest extends \ApkParser\Xml
 
     /**
      * @return Application
+     * @throws Exceptions\XmlParserException
      */
     public function getApplication()
     {
@@ -37,6 +38,7 @@ class Manifest extends \ApkParser\Xml
     /**
      * Returns ManifestXml as a String.
      * @return string
+     * @throws \Exception
      */
     public function getXmlString()
     {
@@ -45,7 +47,9 @@ class Manifest extends \ApkParser\Xml
 
     /**
      * Get Application Permissions
+     * @param string $lang
      * @return array
+     * @throws Exceptions\XmlParserException
      */
     public function getPermissions($lang = 'en')
     {
@@ -55,6 +59,7 @@ class Manifest extends \ApkParser\Xml
     /**
      * Android Package Name
      * @return string
+     * @throws \Exception
      */
     public function getPackageName()
     {
@@ -64,6 +69,7 @@ class Manifest extends \ApkParser\Xml
     /**
      * Application Version Name
      * @return string
+     * @throws \Exception
      */
     public function getVersionName()
     {
@@ -73,6 +79,7 @@ class Manifest extends \ApkParser\Xml
     /**
      * Application Version Code
      * @return mixed
+     * @throws \Exception
      */
     public function getVersionCode()
     {
@@ -81,6 +88,7 @@ class Manifest extends \ApkParser\Xml
 
     /**
      * @return bool
+     * @throws \Exception
      */
     public function isDebuggable()
     {
@@ -90,6 +98,7 @@ class Manifest extends \ApkParser\Xml
     /**
      * The minimum API Level required for the application to run.
      * @return int
+     * @throws Exceptions\XmlParserException
      */
     public function getMinSdkLevel()
     {
@@ -98,9 +107,14 @@ class Manifest extends \ApkParser\Xml
         return hexdec($usesSdk['@attributes']['minSdkVersion']);
     }
 
+    /**
+     * @param $attributeName
+     * @return mixed
+     * @throws \Exception
+     */
     private function getAttribute($attributeName)
     {
-        if ($this->attrs === NULL) {
+        if ($this->attrs === null) {
             $xmlObj = $this->getXmlObject();
             $vars = get_object_vars($xmlObj->attributes());
             $this->attrs = $vars['@attributes'];
@@ -112,6 +126,11 @@ class Manifest extends \ApkParser\Xml
         return $this->attrs[$attributeName];
     }
 
+    /**
+     * @param $name
+     * @return mixed
+     * @throws Exceptions\XmlParserException
+     */
     public function getMetaData($name)
     {
         if ($this->meta === null) {
@@ -134,6 +153,7 @@ class Manifest extends \ApkParser\Xml
     /**
      * More Information About The minimum API Level required for the application to run.
      * @return AndroidPlatform
+     * @throws \Exception
      */
     public function getMinSdk()
     {
@@ -143,6 +163,7 @@ class Manifest extends \ApkParser\Xml
     /**
      * More Information About The target API Level required for the application to run.
      * @return AndroidPlatform
+     * @throws \Exception
      */
     public function getTargetSdk()
     {
@@ -153,6 +174,7 @@ class Manifest extends \ApkParser\Xml
     /**
      * The target API Level required for the application to run.
      * @return float|int
+     * @throws Exceptions\XmlParserException
      */
     public function getTargetSdkLevel()
     {
@@ -161,12 +183,13 @@ class Manifest extends \ApkParser\Xml
         if (hexdec($usesSdk['@attributes']['targetSdkVersion'])) return hexdec($usesSdk['@attributes']['targetSdkVersion']);
         return null;
     }
-    
+
     /**
      * get SimleXmlElement created from AndroidManifest.xml
      *
      * @param mixed $className
-     * @return \ApkParser\ManifestXmlElement
+     * @return ManifestXmlElement|\SimpleXMLElement
+     * @throws Exceptions\XmlParserException
      */
     public function getXmlObject($className = '\ApkParser\ManifestXmlElement')
     {
@@ -175,6 +198,7 @@ class Manifest extends \ApkParser\Xml
 
     /**
      * Basically string casting method.
+     * @throws \Exception
      */
     public function __toString()
     {

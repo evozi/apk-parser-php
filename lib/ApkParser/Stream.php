@@ -22,7 +22,6 @@ class Stream
     /**
      * @param resource $stream File stream.
      * @throws \Exception
-     * @return \ApkParser\Stream
      */
     public function __construct($stream)
     {
