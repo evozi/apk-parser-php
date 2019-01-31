@@ -1,4 +1,5 @@
 <?php
+
 namespace ApkParser;
 
 /**
@@ -9,7 +10,6 @@ namespace ApkParser;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 class IntentFilter
 {
     public $actions = array();
@@ -61,6 +61,7 @@ class IntentFilter
     {
         return $this->actions;
     }
+
     /**
      * @param mixed $actions
      */
@@ -68,6 +69,7 @@ class IntentFilter
     {
         $this->actions = $actions;
     }
+
     /**
      * @return mixed
      */
@@ -75,6 +77,7 @@ class IntentFilter
     {
         return $this->categories;
     }
+
     /**
      * @param mixed $categories
      */

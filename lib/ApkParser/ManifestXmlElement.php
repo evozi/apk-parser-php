@@ -1,4 +1,5 @@
 <?php
+
 namespace ApkParser;
 /**
  * This file is part of the Apk Parser package.
@@ -9,7 +10,6 @@ namespace ApkParser;
  * file that was distributed with this source code.
  * @property mixed application
  */
-
 class ManifestXmlElement extends \SimpleXMLElement
 {
     /**

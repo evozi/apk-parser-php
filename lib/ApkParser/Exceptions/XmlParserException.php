@@ -1,4 +1,5 @@
 <?php
+
 namespace ApkParser\Exceptions;
 
 class XmlParserException extends ApkException
@@ -31,7 +32,7 @@ class XmlParserException extends ApkException
      */
     private function display_xml_error(\LibXMLError $error, $xml)
     {
-        $return  = $xml[$error->line - 1] . "\n";
+        $return = $xml[$error->line - 1] . "\n";
         $return .= str_repeat('-', $error->column) . "^\n";
 
         switch ($error->level) {

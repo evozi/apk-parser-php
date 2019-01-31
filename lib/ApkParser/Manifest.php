@@ -1,6 +1,6 @@
 <?php
+
 namespace ApkParser;
-use ApkParser\AndroidPlatform;
 
 /**
  * This file is part of the Apk Parser package.
@@ -11,7 +11,6 @@ use ApkParser\AndroidPlatform;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 class Manifest extends \ApkParser\Xml
 {
 
