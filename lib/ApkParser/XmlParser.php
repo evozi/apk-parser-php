@@ -144,6 +144,7 @@ class XmlParser
 
                             if (($attrValueSi != -1)) {
                                 $attrValue = $this->compXmlString($this->bytes, $sitOff, $stOff, $attrValueSi);
+                                $attrValue = htmlspecialchars($attrValue, ENT_XML1 | ENT_QUOTES, 'UTF-8'); // https://stackoverflow.com/a/29924176
                             } else {
                                 $attrValue = "0x" . dechex($attrResId);
                             }
