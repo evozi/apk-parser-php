@@ -15,12 +15,19 @@ use ApkParser\Exceptions\XmlParserException;
  */
 class XmlParser
 {
+    // libs/androidfw/include/androidfw/ResourceTypes.h
+    // Chunk types in RES_XML_TYPE
+    const START_DOC_TAG = 0x0100;
     const END_DOC_TAG = 0x0101;
     const START_TAG = 0x0102;
     const END_TAG = 0x0103;
     const TEXT_TAG = 0x0104;
 
+    const RES_NULL_TYPE = 0x0000;
     const RES_STRING_POOL_TYPE = 0x0001;
+    const RES_TABLE_TYPE = 0x0002;
+    const RES_XML_TYPE = 0x0003;
+
     const RES_XML_START_ELEMENT_TYPE = 0x0102;
     const RES_XML_RESOURCE_MAP_TYPE = 0x0180;
 
@@ -94,6 +101,8 @@ class XmlParser
                 $resIdsCount = ($chunkSize - $chunkHeaderSize) / 4;
             } else if ($chunkType == self::RES_XML_START_ELEMENT_TYPE) {
                 break;  // Let the next loop take care of it, though we can really move the code to this loop.
+            } else if ($chunkType == self::RES_NULL_TYPE) {
+                break;
             }
 
             $off += $chunkSize;
@@ -117,6 +126,7 @@ class XmlParser
                         $tagName = $this->compXmlString($this->bytes, $sitOff, $stOff, $nameSi);
                         $startTagLineNo = $lineNo;
                         $attr_string = "";
+                        $attrNameArray = array();
 
                         for ($ii = 0; $ii < $numbAttrs; $ii++) {
                             $attrNameNsSi = $this->littleEndianWord($this->bytes, $off);
@@ -132,15 +142,21 @@ class XmlParser
                                 $attrName = $this->getResourceNameFromID($attrNameResID);
                             }
 
-
                             if (($attrValueSi != -1)) {
                                 $attrValue = $this->compXmlString($this->bytes, $sitOff, $stOff, $attrValueSi);
                             } else {
                                 $attrValue = "0x" . dechex($attrResId);
                             }
 
-                            $attr_string .= " " . $attrName . "=\"" . $attrValue . "\"";
+                            //TODO insert proper namespace for attr name else xml will throw error,
+                            // for now we drop duplicate attr name that is broken in apk file
+                            array_push($attrNameArray, $attrName);
 
+                            if (count(array_unique($attrNameArray)) < count($attrNameArray)) {
+                                // duplicate $attrName
+                            } else {
+                                $attr_string .= " " . $attrName . "=\"" . $attrValue . "\"";
+                            }
                         }
 
                         $this->appendXmlIndent($indentCount, "<" . $tagName . $attr_string . ">");
@@ -154,6 +170,13 @@ class XmlParser
                         $off += 6 * 4;
                         $tagName = $this->compXmlString($this->bytes, $sitOff, $stOff, $nameSi);
                         $this->appendXmlIndent($indentCount, "</" . $tagName . ">");
+                    }
+                    break;
+
+                case self::START_DOC_TAG:
+                    {
+                        $off += 4;
+                        //todo
                     }
                     break;
 
@@ -186,6 +209,9 @@ class XmlParser
                             }
                         }
                     }
+                    break;
+                case self::RES_NULL_TYPE:
+                    $off += 4;
                     break;
 
                 default:
