@@ -349,8 +349,8 @@ class XmlParser
     {
         if (!$this->ready)
             $this->decompress();
-        $xml = utf8_encode($this->xml);
-        $xml = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $xml); // get rid of the "&" and replace it with it's HTML code version
+
+        $xml = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $this->xml); // get rid of the "&" and replace it with it's HTML code version
         $xml = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x80-\x9F]/u', '', $xml);
         return $xml;
     }
