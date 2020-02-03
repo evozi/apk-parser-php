@@ -76,6 +76,11 @@ class SeekableStream
         fseek($this->stream, $offset);
     }
 
+    public function backSeek($offset)
+    {
+        fseek($this->stream, $offset, SEEK_CUR);
+    }
+
     /**
      * Check if we have reached the end of the stream
      *
