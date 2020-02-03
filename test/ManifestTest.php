@@ -8,9 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-class ManifestTest extends PHPUnit_Framework_TestCase
+class ManifestTest extends \PHPUnit\Framework\TestCase
 {
 
+    /**
+     * @throws \ApkParser\Exceptions\XmlParserException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \PHPUnit\Framework\MockObject\RuntimeException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
     public function testMetaData()
     {
         $mock = $this->getMockBuilder('ApkParser\XmlParser')

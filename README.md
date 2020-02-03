@@ -8,7 +8,7 @@ The class can also extract the whole files contained in the APK file to a given 
 
 ### Requirements
 
-PHP 5.3+
+PHP 7.0+
 
 # Installation
 
