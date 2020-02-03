@@ -41,6 +41,23 @@ class ManifestXmlElement extends \SimpleXMLElement
     }
 
     /**
+     * @return array
+     */
+    public function getPermissionsRaw()
+    {
+        /**
+         * @var \ApkParser\ManifestXmlElement
+         */
+        $permsArray = $this->{'uses-permission'};
+        $perms = array();
+        foreach ($permsArray as $perm) {
+            $permAttr = get_object_vars($perm);
+            $perms[] = $permAttr['@attributes']['name'];
+        }
+        return $perms;
+    }
+
+    /**
      * @return Application
      */
     public function getApplication()
